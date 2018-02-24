@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>jQuery Basics</title>
+    <style>
+      li {font-family: courier, sans-serif;}
+    </style>
+  </head>
+  <body>
+    <h1>jQuery basics</h1>
+    <button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
+
+
+    <div class="container-fluid">
+      <p>Open the console and run these commands, noting the console response and the page impact.</p>
+      <ul>
+        <li>$("button")</li>
+        <li>$("button").hide();</li>
+        <li>$("button").show();</li>
+        
+        <li>$(".btn-danger").hide();</li>
+        <li>$(".btn-danger").show();</li>
+        <li><pre>
+          $("button").on("click", function() {
+          
+            $("button").hide();
+          });
+          
+          
+        </pre> <br>(After running the code, click any button)<br><br></li>
+        <li>$("button").show();</li>
+        <li><pre>
+          $("button").on("click", function() {
+          
+            $(this).hide();
+          });
+          
+          
+        </pre> <br>(After running the code, click any button)<br><br>
+        Still hiding all buttons -- why?<br><br>
+        </li>
+        
+        <li>$("button").off("click");</li>
+        
+        <li><pre>
+          $("button").on("click", function() {
+          
+            $(this).hide();
+          });
+          
+          
+        </pre> <br>(After running the code, click any button)<br><br>
+        
+        
+        
+        <li>$("button:contains('Info')").fadeOut();</li>
+        <li>$("body").prepend("Hello World");</li>
+        <li>$("body").prepend("<button>Hello World<button>");</li>
+        <li>$("body").prepend($("button:contains('Info')").clone());</li>
+        <li>$("body").prepend($("button").clone());</li>
+        <li>$("button").css("width","25%");</li>
+        
+      </ul>
+    
+    
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

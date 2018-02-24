@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> </title>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>
+    $.get("https://data.cityofchicago.org/resource/cwig-ma7x.json")
+      .done(function(response) {
+        console.log(response);
+      })
+      .fail (function(err) {
+        console.log(err);
+      })
+    
+    
+    
+  </script>
+
+
+</body>
+
+</html>
