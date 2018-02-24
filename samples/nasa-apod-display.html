@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NASA APOD</title>
+</head>
+
+<body>
+  <h1>NASA Astronomy Picture of the Day</h1>
+
+
+
+
+ 
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>
+      var url = "https://api.nasa.gov/planetary/apod?api_key=2sH5ks1PRiOPyzbYwIdJmk0WSqwcSdQ6hNNz2lip";
+      $.ajax({
+        url: url,
+        method: 'GET',
+      }).done(function(result) {
+        var img = $("<img>");
+        img.attr("src", result.url);
+        img.attr("alt", result.title);
+        $("body").append(img);
+        $("body").append($("<h3>").text(result.title));
+        $("body").append($("<p>").text(result.explanation));
+        
+      }).fail(function(err) {
+        throw err;
+      });
+    
+    
+    
+  </script>
+
+
+</body>
+
+</html>

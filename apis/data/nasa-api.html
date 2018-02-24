@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NASA APOD API Example</title>
+</head>
+
+<body>
+  <h1>Simple AJAX Call to the NASA APOD API</h1>
+  <p>When this page loads, it's making an AJAX call using the jQuery $.ajax function to query a NASA API.  <a href="https://api.nasa.gov/api.html">https://api.nasa.gov/api.html</a> <br><br>
+    
+  </p>
+
+  <p>
+    
+    <pre>
+
+      var url = "https://api.nasa.gov/planetary/apod?api_key=2sH5ks1PRiOPyzbYwIdJmk0WSqwcSdQ6hNNz2lip";
+      $.ajax({
+        url: url,
+        method: 'GET',
+      }).done(function(result) {
+        console.log(result);
+      }).fail(function(err) {
+        throw err;
+      });
+  </pre></p>
+  <p>Open the DevTools, then refresh the page; examine the Console and Network tabs</p>
+ 
+
+ 
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>
+      var url = "https://api.nasa.gov/planetary/apod?api_key=2sH5ks1PRiOPyzbYwIdJmk0WSqwcSdQ6hNNz2lip";
+      $.ajax({
+        url: url,
+        method: 'GET',
+      }).done(function(result) {
+        console.log(result);
+      }).fail(function(err) {
+        throw err;
+      });
+    
+    
+    
+  </script>
+
+
+</body>
+
+</html>

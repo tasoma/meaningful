@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Retrieving and displaying data</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+       <div class="container">
+        <h1>Retrieving and displaying data <smaller>Display article search data.</smaller></h1>
+        
+
+            <input id="txtQuery" placeholder="Enter a search term." class="form-control" type="text">
+            <button id="btnSearch">Search NYT Articles</button>
+        <div class="container">
+            <div id="results">
+                
+            </div>
+        </div>
+</div>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+      $(document).ready(function() {
+         $("#btnSearch").on("click", function() {
+             getArticles($("#txtQuery").val());
+         });
+      });
+      
+      var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+      
+      
+      function getArticles(query) {
+      
+      url += '?' + $.param({
+        'api-key': "171742565481ab1fc4d4ed5e38f63d1c:2:60955541",
+        'q': query
+      });
+      $.ajax({
+        url: url,
+        method: 'GET',
+      }).done(function(result) {
+        console.log(result);
+        displayResults(result.response)
+      }).fail(function(err) {
+        throw err;
+      });
+    
+      }
+      
+      function displayResults (response) {
+          $("#results").append("Number of hits: " + response.meta.hits + ", Showing " + response.docs.length);
+          
+          $.each(response.docs, function(i,v) {
+              var a = $("<a>");
+              a.text(v.web_url);
+              a.attr("href",v.web_url);
+              $("#results").append($("<h2>").text(v.headline.main));
+              $("#results").append(a);
+
+          });
+          
+      }
+    
+  </script> 
+    </body>
+</html>

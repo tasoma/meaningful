@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NYTimes API Example</title>
+</head>
+
+<body>
+  <h1>Simple AJAX Call to an NYT API</h1>
+  <p>When this page loads, it's making an AJAX call using the jQuery $.ajax function to query the NYTimes Article Search API.  <a href="http://developer.nytimes.com/article_search_v2.json#">http://developer.nytimes.com/article_search_v2.json#</a> <br><br>
+    
+  </p>
+  <p>Please don't distribute the script with my API key included.</p>
+  <p>
+    Note the "q" property in the object passed to the function.
+    <pre>
+      // Built by LucyBot. www.lucybot.com
+      var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+      url += '?' + $.param({
+        'api-key': "171742565481ab1fc4d4ed5e38f63d1c:2:60955541",
+        'q': 'Grace Hopper'
+      });
+      $.ajax({
+        url: url,
+        method: 'GET',
+      }).done(function(result) {
+        console.log(result);
+      }).fail(function(err) {
+        throw err;
+      });
+  </pre></p>
+  <p>Open the DevTools, then refresh the page; examine the Console and Network tabs</p>
+  <p>Copy and paste the code into the console, and change the "q" property to another value.</p>
+
+ 
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>
+      var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+      url += '?' + $.param({
+        'api-key': "171742565481ab1fc4d4ed5e38f63d1c:2:60955541",
+        'q': 'Grace Hopper'
+      });
+      $.ajax({
+        url: url,
+        method: 'GET',
+      }).done(function(result) {
+        console.log(result);
+      }).fail(function(err) {
+        throw err;
+      });
+    
+    
+    
+  </script>
+
+
+</body>
+
+</html>

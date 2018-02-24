@@ -2,10 +2,49 @@
 <html>
 
 <head>
-  <title> </title>
+  <title>Simple AJAX Call</title>
 </head>
 
 <body>
+  <h1>Simple AJAX Call to a Socrata API</h1>
+  <p>When this page loads, it's making an AJAX call using the jQuery $.get command to retrieve Food Inspection data from the City of Chicago Data Portal.
+  </p>
+  <p>Open the DevTools, then refresh the page; examine the Console and Network tabs</p>
+  <p>Here's another AJAX call, filtering on zip.  You can run it in the console.<pre>
+      var apiEndpoint = "https://data.cityofchicago.org/resource/cwig-ma7x.json";
+      $.get(apiEndpoint + "?zip=60645")
+      .done(function(response) {
+        console.log(response);
+      })
+      .fail (function(err) {
+        console.log(err);
+      })
+  </pre></p>
+  
+   <p>This url includes a more complex filtering, using a $where paramter.<pre>
+      var apiEndpoint = "https://data.cityofchicago.org/resource/cwig-ma7x.json";
+      $.get(apiEndpoint + "?$where=zip=60645 and inspection_date > '2018-01-01'")
+      .done(function(response) {
+        console.log(response);
+      })
+      .fail (function(err) {
+        console.log(err);
+      })
+  </pre></p>
+  
+ 
+   <p>This example passes a $query parameter, letting us using grouping and aggregation functions.<pre>
+      var apiEndpoint = "https://data.cityofchicago.org/resource/cwig-ma7x.json";
+      $.get(apiEndpoint + "?$query=select zip, count(*) where inspection_date > '2018-01-01' group by zip order by zip")
+      .done(function(response) {
+        console.log(response);
+      })
+      .fail (function(err) {
+        console.log(err);
+      })
+  </pre></p> 
+ 
+  
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script>
     $.get("https://data.cityofchicago.org/resource/cwig-ma7x.json")
